@@ -205,5 +205,4 @@ for yr=1:14 %iterate over every year
 end
 
 %Fix any negatives
-sum(pd(pd<0));
 pd(pd<0)=0;
