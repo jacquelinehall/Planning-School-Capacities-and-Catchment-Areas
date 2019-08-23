@@ -1,9 +1,9 @@
-function schdist=iscompact3(XC, ni,i, x, y,sx, sy,yr)
+function schdist=iscompact3(XC, ni,i, x, y,sx, sy)
 %%Local compactness measure using distance based measure to the school
 %%location of each catchment area
 schdist=0;
 
-XCi=find(XC(:,yr)==i);
+XCi=find(XC==i); 
 
 for k=1:length(XCi)
          schdist=schdist+sqrt((x(XCi(k))-sx(i))^2+(y(XCi(k))-sy(i))^2);

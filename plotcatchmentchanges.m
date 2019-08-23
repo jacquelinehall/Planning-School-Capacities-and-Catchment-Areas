@@ -1,7 +1,7 @@
-function plotcatchment=plotcatchmentchanges(Xbest, XI, Geodata)
+function plotcatchment=plotcatchmentchanges(Xbest, XI, Geodata,numberschools)
 %% compactness measure using schwartzbergs method
 subplot(1,2,1); 
-for i=1:20
+for i=1:numberschools
         %Define empty lists to add all of the x and y coordinates for the
         %postcodes in the catchment area for i.
         x1=[];
@@ -16,7 +16,8 @@ for i=1:20
          hold on
          plot(polyshape(x1(bound), y1(bound)));
     end
-subplot(1,2,2); for i=1:20
+subplot(1,2,2); 
+for i=1:numberschools
         %Define empty lists to add all of the x and y coordinates for the
         %postcodes in the catchment area for i.
         x1=[];

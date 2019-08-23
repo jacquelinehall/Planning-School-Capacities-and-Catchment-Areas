@@ -1,4 +1,4 @@
-function CRatio=iscompact(XC, ni,i, x, y,yr)
+function CRatio=iscompact(XC, ni,i, x, y)
 %% compactness measure using schwartzbergs method
 
     %Define empty lists to add all of the x and y coordinates for the
@@ -6,7 +6,7 @@ function CRatio=iscompact(XC, ni,i, x, y,yr)
     x1=[];
     y1=[];
     for j=1:length(XC)
-        if XC(j,yr)==i
+        if XC(j)==i
             x1=[x1,x(j)];
             y1=[y1,y(j)];
         end

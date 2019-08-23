@@ -1,22 +1,28 @@
-%reults run to obtain sections of the results
+%Results copy for Initial solution
 
-%Best found solution
-XC=Xbest;
-YC=Ybest;
 
-% %Intial
-% XC=XI;
-% YC=YI;
+w1=(10/length(XI))*(0.8);
+%Scaling= number of classes
+w2=(1/sum(YI))*(0.1);
+%Scaling = large 
+p1=1;
+p2=1;
+%Scaling = initial global compactness MIGHT BE TOO SMALL CANT SEE ANY
+%CHANGE IN MAIN OBJECTIVE
+p3=(1/9191800)*(0.1);
 
+
+YC=YI;
+XC=XI;
 C=classcap(XC,pd,Cv);
 
 numberschools=length(YI);
 
 
-%% Calculate f1
+% Calculate f1
 f1=sum(XC~=XI);
 
-%% Calculate f2
+% Calculate f2
 %Define the weighting on decreasing capacitiy as sigma
 sigma=0; %DIVIDE SIGMA BY w2 ALWAYS!!!!!! AS IT IS MULTIPLED IN THE END!!!!
 %SIGMA NOTE ^^^^^^
@@ -29,7 +35,7 @@ for i=1:numberschools
     end
 end
 
-%% Calculate f3
+% Calculate f3
 f3=0;
 for i=1:numberschools
     if YC(i)>C(i)
@@ -38,7 +44,7 @@ for i=1:numberschools
 end
 
 
-%% Calculate f4
+% Calculate f4
 
 %NOTE this is using the 2019 prediction numbers for S11 in pd
 
@@ -58,7 +64,7 @@ end
 
 
 
-%% Calculate f5 overlap penalisation (global compactness)
+% Calculate f5 overlap penalisation (global compactness)
 
 f5=0;
 
@@ -80,32 +86,13 @@ for i=1:numberschools
     end
 end
 
-%Point based appracoh to global compactness
-% %TAKES TOO LONG TO RUN!
-% %Calculate the total sum of points in overlap (note this is divided by 2 for 
-% %duplicate counting).
-% for i=1:20
-%     for j=1:20
-%         if i~=j
-%             for k=1:length(x)
-%                 if isinterior(intersect(ps(i),ps(j)),[x(k),y(k)])==1
-%                    f5=f5+1/2;
-%                 end
-%             end
-%         end
-%     end
-% end
-
-
-%% Complete objective function
-f=w1*f1+w2*f2+p1*f3+p2*f4+p3*f5;
-
-
+f=w1*f1+w2*f2+p1*f3+p2*f4+p3*f5
 f1
 f2
+f3
 f4
 f5
-f
 
-
-
+%plotcatchmentpoints(Xbest, Geodata,numberschools)
+%for the convex hull representation
+%plotcatchment(Xbest, Geodata,numberschools)

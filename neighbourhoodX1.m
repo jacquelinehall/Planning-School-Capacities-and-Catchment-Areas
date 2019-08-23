@@ -1,4 +1,4 @@
-function NX=neighbourhoodX1(XC, i, x,y, yr)
+function NX=neighbourhoodX1(XC, i, x,y)
 %This is a neighbourhood search based on contiguity, The definition used
 %within this alogirthm is that a neighbouring solution for a catchment area
 %X is all points y such that y is the closest point outside X to atleast
@@ -10,7 +10,7 @@ function NX=neighbourhoodX1(XC, i, x,y, yr)
     x1=[];
     y1=[];
     for j=1:length(XC)
-        if XC(j,yr)==i
+        if XC(j)==i
             x1=[x1,x(j)];
             y1=[y1,y(j)];
         end
@@ -23,7 +23,7 @@ function NX=neighbourhoodX1(XC, i, x,y, yr)
         %iteration.
         smallED=100000;
         for j=1:length(XC)
-            if XC(j,yr)~=i
+            if XC(j)~=i
                 x2=x(j);
                 y2=y(j);
                 if sqrt((x2-x1(k))^2+(y2-y1(k))^2)<smallED %Check if this 

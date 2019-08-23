@@ -15,7 +15,11 @@ function delta=obchangeX(NX,z,i,XC,YC,XI,w1,p2,p3,pd,x,y,sx,sy)
         delta=delta-w1;
     end
 
-
+    
+    
+    
+    
+    
     %%Calculate any extra penalisation from moving postcode to
     %school i due to the classroom sizes
     %First check if the catchment area NX(z) is being moved into is
@@ -33,7 +37,7 @@ function delta=obchangeX(NX,z,i,XC,YC,XI,w1,p2,p3,pd,x,y,sx,sy)
         %to the additional students as a result from moving the postcode.
         delta=delta+p2*pd(1,1,NX(z));
     elseif ((ftemp-20*YC(i))<=0) && ((ftemp+pd(1,1,NX(z))-20*YC(i))>0)
-        %delta=delta+p2*min(pd(1,1,NX(z)), (20*YC(i)-ftemp));
+        delta=delta+p2*min(pd(1,1,NX(z)), (20*YC(i)-ftemp));
         delta=delta+p2*((ftemp+pd(1,1,NX(z))-20*YC(i)));
     end
 

@@ -1,4 +1,4 @@
-function bratio=isbalanced(XC,i,pd,YCi,yr, Xintoi, Xouti)
+function bratio=isbalanced(XC,i,pd,YCi, Xintoi, Xouti)
 %% Calculate the ratio of utilisation of the schools
 
 %% For general balance checks:
@@ -12,17 +12,17 @@ function bratio=isbalanced(XC,i,pd,YCi,yr, Xintoi, Xouti)
     %Calculate the number of students
     studentnos=0;
     for j=1:length(XC)
-        if XC(j,yr)==i
-            studentnos=studentnos+pd(yr,1,j);
+        if XC(j)==i
+            studentnos=studentnos+pd(1,1,j);
         end
     end
     
     if Xintoi~=0
-        studentnos=studentnos+pd(yr,1,Xintoi);
+        studentnos=studentnos+pd(1,1,Xintoi);
     end
     
     if Xouti~=0
-        studentnos=studentnos-pd(yr,1,Xouti);
+        studentnos=studentnos-pd(1,1,Xouti);
     end
     
     

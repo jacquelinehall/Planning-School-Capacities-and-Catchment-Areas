@@ -33,7 +33,7 @@ function delta=obchangeX(NX,z,i,XC,YC,XI,w1,p2,p3,pd,x,y,sx,sy)
         %to the additional students as a result from moving the postcode.
         delta=delta+p2*pd(1,1,NX(z));
     elseif ((ftemp-20*YC(i))<=0) && ((ftemp+pd(1,1,NX(z))-20*YC(i))>0)
-        %delta=delta+p2*min(pd(1,1,NX(z)), (20*YC(i)-ftemp));
+        delta=delta+p2*min(pd(1,1,NX(z)), (20*YC(i)-ftemp));
         delta=delta+p2*((ftemp+pd(1,1,NX(z))-20*YC(i)));
     end
 
@@ -61,6 +61,8 @@ function delta=obchangeX(NX,z,i,XC,YC,XI,w1,p2,p3,pd,x,y,sx,sy)
     if isinterior(ps, [x(NX(z)),y(NX(z))])>0
         %Update the change with the distance and a relevant caling factor!
         delta=delta+p3*sqrt((x(NX(z))-sx(i))^2+(y(NX(z))-sy(i))^2)/100;
+    else
+        delta=delta-p3*100000
     end
     
     %Method two: same method but penalisation of distance from closest 

@@ -1,9 +1,9 @@
-function pwdist=iscompact2(XC, ni, i, x, y,yr)
+function pwdist=iscompact2(XC, ni, i, x, y)
 %%Local compactness measure using distance based measure of all the pairwise 
 % distances
 pwdist=0;
 
-XCi=find(XC(:,yr)==i);
+XCi=find(XC==i);
 
  for k=1:length(XCi)
      for j=1:length(XCi)
