@@ -1,31 +1,30 @@
 %% Code to generate a random postcode allocation of students in each school
 %year for the years 2019-3032, based upon the predicted number of students
 %in each school and their associated current catchment areas.
-clear all
 
 %MAKE SURE TO CHANGE SEED FOR MULTIPLE DATA SETS
 
-%% Read in the data from the two data sets
-num = xlsread("SecondaryPostcodeGeo.csv");
-[~,txtData]  = xlsread('SecondaryPostcodeGeo.csv', 'F:F');
-postcodes=txtData(2:length(txtData),:);
-
-%Store the names of the school sheets to use, note these need to be
-%included in the excel sheet for the code to work and read all sheets from
-%the file
-[~,Schools]  =xlsread("Secondary_Projections_2018_11_08_PUBLISHED.xlsx", 'Projection Summary','V:V');
-
-%Create empty 3D array to store all the different school years projections 
-%for each school each year.
-m=zeros(14,6,20);
-
-for sch=1:20 %Iterate over the schools (sheet names in excel file)
-    if sch==12 %The 12th school ' JAMESG' has slightly changed position of graph
-          m(:,:,sch)=xlsread('Secondary_Projections_2018_11_08_PUBLISHED.xlsx',Schools{sch},'T41:Y54');
-    else
-        m(:,:,sch)=xlsread('Secondary_Projections_2018_11_08_PUBLISHED.xlsx',Schools{sch},'R41:W54');
-    end
-end
+% %% Read in the data from the two data sets
+% num = xlsread("SecondaryPostcodeGeo.csv");
+% [~,txtData]  = xlsread('SecondaryPostcodeGeo.csv', 'F:F');
+% postcodes=txtData(2:length(txtData),:);
+% 
+% %Store the names of the school sheets to use, note these need to be
+% %included in the excel sheet for the code to work and read all sheets from
+% %the file
+% [~,Schools]  =xlsread("Secondary_Projections_2018_11_08_PUBLISHED.xlsx", 'Projection Summary','V:V');
+% 
+% %Create empty 3D array to store all the different school years projections 
+% %for each school each year.
+% m=zeros(14,6,20);
+% 
+% for sch=1:20 %Iterate over the schools (sheet names in excel file)
+%     if sch==12 %The 12th school ' JAMESG' has slightly changed position of graph
+%           m(:,:,sch)=xlsread('Secondary_Projections_2018_11_08_PUBLISHED.xlsx',Schools{sch},'T41:Y54');
+%     else
+%         m(:,:,sch)=xlsread('Secondary_Projections_2018_11_08_PUBLISHED.xlsx',Schools{sch},'R41:W54');
+%     end
+% end
 
 %% Determine the start and end index for each school, this will give us the
 % postcodes in each schools catchment area
@@ -205,6 +204,6 @@ for yr=1:14 %iterate over every year
     end 
 end
 
-%Fix negatives
-sum(pd(pd<0))
+%Fix any negatives
+sum(pd(pd<0));
 pd(pd<0)=0;
