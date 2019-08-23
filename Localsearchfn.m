@@ -55,7 +55,7 @@ function [Xbest,Ybest,fbest,fintial]=Localsearchfn(XI,YI,x,y,pd,w1,w2,p1,p2,p3,C
         %Generate a uniform rv to decide which neighbourhood to search
         u=rand;
         %Neighbourhood for moving postcodes
-        if u>0%0.75
+        if u>0.75
             for yr=1:14
                 for i=1:schoolnos
                     NX=neighbourhoodX1(XC, i, x,y,yr);
